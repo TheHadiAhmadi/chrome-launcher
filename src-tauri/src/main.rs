@@ -109,16 +109,16 @@ fn get_chrome_executable() -> Result<PathBuf, String> {
 
 fn main() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_autostart::init(
-            tauri_plugin_autostart::MacosLauncher::LaunchAgent,
-            None,
-        ))
-        .on_window_event(|window, event| {
-            if let tauri::WindowEvent::CloseRequested { api, .. } = event {
-                api.prevent_close();
-                let _ = window.hide();
-            }
-        })
+        // .plugin(tauri_plugin_autostart::init(
+        //     tauri_plugin_autostart::MacosLauncher::LaunchAgent,
+        //     None,
+        // ))
+        // .on_window_event(|window, event| {
+        //     if let tauri::WindowEvent::CloseRequested { api, .. } = event {
+        //         api.prevent_close();
+        //         let _ = window.hide();
+        //     }
+        // })
         .invoke_handler(tauri::generate_handler![
             get_profiles,
             launch_profile,

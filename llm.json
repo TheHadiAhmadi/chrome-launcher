@@ -1,0 +1,1387 @@
+{
+  "ProjectMap": {
+    "Name": ".",
+    "Path": "",
+    "FolderSummary": "Summary unavailable due to error.",
+    "Files": [
+      {
+        "Name": ".gitignore",
+        "Summary": {
+          "Summary": "This is a .gitignore file that tells Git to ignore specified files and directories, such as build artifacts, environment files, and cache files for a Svelte-based project.",
+          "Exceptions": "The line \u0027! .env.example\u0027 is an exception to include this example environment file even though other .env files are ignored.",
+          "Features": "Ignores system files like .DS_Store, dependencies in node_modules, build outputs in /build, Svelte kit cache in /.svelte-kit, package output in /package, all .env files except the example, and timestamped config files from Vite.",
+          "Roles": [
+            "Configuration"
+          ],
+          "Hash": "67D64503D867623110EBE2EE3E6E5130BE623A6DFBA92C356DECD75D7777C2F7"
+        }
+      },
+      {
+        "Name": "vite.config.js",
+        "Summary": {
+          "Summary": "This is a Vite configuration file for a SvelteKit application integrated with Tauri, setting up development and build options tailored for Tauri\u0027s requirements.",
+          "Exceptions": "Uses @ts-expect-error to suppress TypeScript warnings for Node.js global \u0027process\u0027, and defines an async configuration function despite not using async features.",
+          "Features": "Integrates SvelteKit plugin into Vite, disables screen clearing to preserve Rust errors, enforces fixed port 1420 for Tauri, configures HMR over WebSockets on port 1421 when host is set, and ignores the src-tauri directory in file watching.",
+          "Roles": [
+            "Configuration"
+          ],
+          "Hash": "2497C5107F7E8A0E485668E6DC7FC0F246BA6A82CC0F17A35A06265E904E05F6"
+        }
+      },
+      {
+        "Name": "package-lock.json",
+        "Summary": {
+          "Summary": "A package-lock.json file that locks the exact versions of npm dependencies and sub-dependencies for the \u0027chrome-launcher\u0027 project to ensure consistent installations across environments.",
+          "Exceptions": "No unexpected elements; all entries are standard npm package metadata including names, versions, resolved URLs, integrity hashes, licenses, engines, bin, and optional dependencies.",
+          "Features": "Specifies dependencies like Tauri API and plugin-opener for native app functionality, Svelte for UI, Vite for bundling, TypeScript for type checking, and numerous build tools (esbuild, rollup) supporting multiple platforms; includes dev dependencies for development workflow.",
+          "Roles": [
+            "Dependency Resolver",
+            "Version Locker"
+          ],
+          "Hash": "FA7E0A90C5C8F535F10D44F49B191A01FE4B856465DBF74F59615422CE92D01A"
+        }
+      },
+      {
+        "Name": "package.json",
+        "Summary": {
+          "Summary": "This package.json configures a Node.js project named \u0027chrome-launcher\u0027 that uses SvelteKit and Tauri to develop a desktop application, including scripts for development, building, previewing, type checking, and Tauri operations.",
+          "Exceptions": "The description field is empty, which is unusual for a project with a specific name and purpose; the project uses ES modules explicitly, indicating modern JS setup.",
+          "Features": "Provides npm scripts for development (vite dev), build (vite build), preview (vite preview), type checking (svelte-check), and Tauri command execution; defines runtime dependencies for Tauri API and plugin-opener, and development dependencies for SvelteKit, adapter-static, TypeScript, Vite, and related tooling.",
+          "Roles": [
+            "Configuration",
+            "Manifest"
+          ],
+          "Hash": "3D17A31754BB32C351B4B00690437CF5883A6CD8A0C29C7AA67020C3AC10A662"
+        }
+      },
+      {
+        "Name": "tsconfig.json",
+        "Summary": {
+          "Summary": "This tsconfig.json file configures TypeScript compilation settings for a Svelte Kit project by extending the generated Svelte Kit configuration and specifying compiler options like JS allowance, strict typing, and module resolution.",
+          "Exceptions": "The file includes comments detailing how Svelte Kit manages path aliases and the requirement to manually copy includes/excludes when overriding the extended configuration.",
+          "Features": "Enables JavaScript support, strict type checking, ES module interop, source map generation, JSON module resolution, and bundler-style module resolution.",
+          "Roles": [
+            "Configuration",
+            "TypeScript Configuration"
+          ],
+          "Hash": "BE394C428E89D033696F03011B94BD0D9B8871AB101DBF06E3875BE7E12FF5C9"
+        }
+      }
+    ],
+    "Directories": [
+      {
+        "Name": "src-tauri",
+        "Path": "src-tauri",
+        "FolderSummary": "Summary unavailable due to error.",
+        "Files": [
+          {
+            "Name": "Cargo.toml",
+            "Summary": {
+              "Summary": "This is the Cargo.toml manifest file for a Rust project named \u0027chrome-launcher\u0027, configuring a Tauri application with package details, library settings, and dependencies for building a desktop app launcher.",
+              "Exceptions": "The library name uses a \u0027_lib\u0027 suffix to ensure uniqueness and avoid conflicts with the binary name on Windows, referencing a specific Cargo GitHub issue.",
+              "Features": "Configures the project as a library with multiple crate types (staticlib, cdylib, rlib); includes build dependency on tauri-build; runtime dependencies on Tauri core with plugins for opener, autostart, and global shortcuts, plus serde for serialization, serde_json, and dirs for directory handling.",
+              "Roles": [
+                "Build Configuration",
+                "Dependency Manager"
+              ],
+              "Hash": "D3BD173FE1594CF0DBE20733EDD0EDDE8D5E58EAABEBF7D53A85A0C3D36C8126"
+            }
+          },
+          {
+            "Name": "build.rs",
+            "Summary": {
+              "Summary": "This is a Rust build script that invokes Tauri build functions to configure the compilation process for a Tauri-based desktop application.",
+              "Exceptions": "No unexpected elements or anomalies detected in the file.",
+              "Features": "Utilizes Tauri build API to prepare resources and configure the build environment for a Tauri project.",
+              "Roles": [
+                "Build Script",
+                "Tauri Configuration"
+              ],
+              "Hash": "487059EAF8A947B80F20A9AACAC038A5047B2AD69D2401B827376C67D6FE847F"
+            }
+          },
+          {
+            "Name": ".gitignore",
+            "Summary": {
+              "Summary": "This .gitignore file configures Git to ignore directories and files generated by Cargo (Rust build tool) and Tauri (desktop app framework), such as build outputs and schema files.",
+              "Exceptions": "The file only specifies ignoring for Cargo and Tauri generated files, with no additional ignore patterns like IDE files or logs.",
+              "Features": "Specifies ignoring /target/ directory for compiled files and /gen/schemas for auto-completion schemas.",
+              "Roles": [
+                "Configuration",
+                "Build Artifact Ignorer"
+              ],
+              "Hash": "88707CDA7BA4226EDA3FFA91D8284F1A0D12B827F06FB9BC48425CC0D4AF04AF"
+            }
+          },
+          {
+            "Name": "tauri.conf.json",
+            "Summary": {
+              "Summary": "This file is a Tauri configuration file that defines the build, application, and bundling settings for a desktop app named Chrome Launcher, including window properties, security settings, and icon configurations.",
+              "Exceptions": "The Content Security Policy (CSP) is explicitly set to null, which is unusual as it negates security protections typically enforced in web-based apps.",
+              "Features": "Configures app windows with a title and dimensions, sets up NPM-based build and dev commands, enables universal bundling with custom icons for various platforms, and specifies a development URL.",
+              "Roles": [
+                "Configuration"
+              ],
+              "Hash": "692AE7117E07E8FA21AB16CCB00D34359DE98B68395311D0B9731DEA5B9CAA77"
+            }
+          }
+        ],
+        "Directories": [
+          {
+            "Name": "target",
+            "Path": "src-tauri/target",
+            "FolderSummary": "Summary unavailable due to error.",
+            "Files": [
+              {
+                "Name": "CACHEDIR.TAG",
+                "Summary": {
+                  "Summary": "This file is a cache directory tag created by Cargo, a Rust build tool, to mark the directory as a cache area for proper identification and handling by systems that recognize the .bford.info cachedir standard.",
+                  "Exceptions": "",
+                  "Features": "Provides a signature hash for cache directory verification.",
+                  "Roles": [
+                    "Marker"
+                  ],
+                  "Hash": "6D9D1D216E0F83ABC5E5662CA62C92B4F23009466B54FA27321A69ACDB778BB2"
+                }
+              },
+              {
+                "Name": ".rustc_info.json",
+                "Summary": {
+                  "Summary": "This JSON file contains metadata from a Rust compilation session, including a unique fingerprint, outputs detailing successful builds with artifacts and target features, and rustc version information.",
+                  "Exceptions": "The file includes a future-dated commit-date (2026-02-11), redacted output paths with placeholders like \u0027lib___\u0027 and \u0027___\u0027, and non-standard formats in stdout.",
+                  "Features": "Stores compilation fingerprints, successful output details including library types, target architecture features (e.g., SSE, atomic support), and rustc executable version and host details.",
+                  "Roles": [
+                    "Build Artifact",
+                    "Metadata Store"
+                  ],
+                  "Hash": "947D036394F31E0FEB636F895C5D1BF28C4B62975E3BCCFA8B66FF71F0286A34"
+                }
+              }
+            ],
+            "Directories": [
+              {
+                "Name": "debug",
+                "Path": "src-tauri/target/debug",
+                "FolderSummary": "Summary unavailable due to error.",
+                "Files": [
+                  {
+                    "Name": ".cargo-lock",
+                    "Summary": {
+                      "Summary": "This is Rust\u0027s Cargo lockfile (commonly named Cargo.lock) that records the exact versions of all dependencies to ensure reproducible builds across environments.",
+                      "Exceptions": "The file is named \u0027.cargo-lock\u0027 which is not the standard name for a Cargo lockfile; typically it should be \u0027Cargo.lock\u0027 without the leading dot.",
+                      "Features": "Locks dependency versions, supports workspace management, ensures deterministic builds.",
+                      "Roles": [
+                        "Configuration",
+                        "Dependency Resolver"
+                      ],
+                      "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                    }
+                  }
+                ],
+                "Directories": [
+                  {
+                    "Name": "incremental",
+                    "Path": "src-tauri/target/debug/incremental",
+                    "FolderSummary": "Summary unavailable due to error.",
+                    "Files": [],
+                    "Directories": [
+                      {
+                        "Name": "chrome_launcher-1yv88rag3d6o9",
+                        "Path": "src-tauri/target/debug/incremental/chrome_launcher-1yv88rag3d6o9",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx48yf4np-0ew9mo0.lock",
+                            "Summary": {
+                              "Summary": "This is a lock file that is likely used to prevent concurrent access to a resource, such as a session or shared file, by its mere existence on the file system.",
+                              "Exceptions": "The filename contains a unique, seemingly random string \u0027s-hfx48yf4np-0ew9mo0\u0027, which may be a generated identifier or hash, making it unusual for standard lock files.",
+                              "Features": "Implements a simple locking mechanism through file presence, potentially for mutual exclusion in applications or file systems.",
+                              "Roles": [
+                                "Lockfile"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "s-hfx4s17m3t-1pgeg5g.lock",
+                            "Summary": {
+                              "Summary": "This file appears to be a lock file, likely generated to prevent concurrent access to a resource, such as a package installation or a session, using a unique hashed identifier in the name.",
+                              "Exceptions": "The file content is not provided in the query, limiting the ability to analyze internal structure or specific locking details.",
+                              "Features": "Implements a locking mechanism to ensure exclusive access to the associated resource.",
+                              "Roles": [
+                                "Lock File"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": [
+                          {
+                            "Name": "s-hfx4s17m3t-1pgeg5g-6afjv8q8nafnrjggpwo0209en",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher-1yv88rag3d6o9/s-hfx4s17m3t-1pgeg5g-6afjv8q8nafnrjggpwo0209en",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This binary file appears to be a serialized Rust work product file from incremental compilation, containing metadata like the Rust version, a hash, and a date.",
+                                  "Exceptions": "The date \u00272026-02-11\u0027 is in the future, potentially indicating a placeholder or version error in the file metadata.",
+                                  "Features": "Supports serialization of compilation work products with version and hash metadata for Rust\u0027s incremental build system.",
+                                  "Roles": [
+                                    "DataStructure",
+                                    "CompilationArtifact"
+                                  ],
+                                  "Hash": "7E3C075798CDAA345E961CD42AB340C6861BC331C904C26C39E845F7DA917328"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          },
+                          {
+                            "Name": "s-hfx48yf4np-0ew9mo0-aduhjsink4ht2178j06glc0i4",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher-1yv88rag3d6o9/s-hfx48yf4np-0ew9mo0-aduhjsink4ht2178j06glc0i4",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This file is a binary file containing metadata for Rust work products, including version information, a commit hash, and an end marker.",
+                                  "Exceptions": "The build date listed is in the year 2026, which is in the future and may be erroneous or indicative of a test/simulation environment.",
+                                  "Features": "Stores a version string (1.93.1), a Git commit hash (01f6ddf75), a build date, and ends with a \u0027rust-end-file\u0027 marker in a compact binary format.",
+                                  "Roles": [
+                                    "Metadata File",
+                                    "Build Artifact"
+                                  ],
+                                  "Hash": "7E3C075798CDAA345E961CD42AB340C6861BC331C904C26C39E845F7DA917328"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          }
+                        ]
+                      },
+                      {
+                        "Name": "chrome_launcher-1rmlblmot50ur",
+                        "Path": "src-tauri/target/debug/incremental/chrome_launcher-1rmlblmot50ur",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx46y6rz3-16e95al.lock",
+                            "Summary": {
+                              "Summary": "This file is a lock file that locks specific versions of dependencies to ensure consistent and reproducible builds.",
+                              "Exceptions": "",
+                              "Features": "Dependency version locking, integrity checks via hashes.",
+                              "Roles": [
+                                "Lock File"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "chrome_launcher-3tvdkoybq554y",
+                        "Path": "src-tauri/target/debug/incremental/chrome_launcher-3tvdkoybq554y",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx46y6tg5-0dh4xv5.lock",
+                            "Summary": {
+                              "Summary": "This file is a package lock file that records the exact versions of dependencies and their sub-dependencies to ensure reproducible builds across different environments.",
+                              "Exceptions": "The file uses a randomly generated name with hyphens and alphanumeric characters, which deviates from typical standard names like yarn.lock or package-lock.json, possibly indicating a custom or temporary locking mechanism.",
+                              "Features": "Locks dependency versions, includes integrity hashes for packages, and supports nested dependency resolution.",
+                              "Roles": [
+                                "Configuration",
+                                "Dependency Resolver"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "chrome_launcher_lib-2rjwwtgwustuc",
+                        "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-2rjwwtgwustuc",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx46xrsgw-163ab0b.lock",
+                            "Summary": {
+                              "Summary": "This appears to be a lock file, likely used to prevent concurrent access or modifications during a process such as deployment or installation.",
+                              "Exceptions": "The filename includes an unusual and possibly random string \u0027s-hfx46xrsgw-163ab0b\u0027, which is not typical for standard lock files.",
+                              "Features": "Implements a basic locking mechanism to ensure exclusive access to a resource or operation.",
+                              "Roles": [
+                                "Lock",
+                                "Synchronization"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": [
+                          {
+                            "Name": "s-hfx46xrsgw-163ab0b-dq9xdphaylwjle64968tqvu3h",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-2rjwwtgwustuc/s-hfx46xrsgw-163ab0b-dq9xdphaylwjle64968tqvu3h",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "metadata.rmeta",
+                                "Summary": {
+                                  "Summary": "This is a Rust crate metadata file (.rmeta) for the chrome_launcher_lib crate, containing compiled dependency information, symbol tables, and hashes for linking and compilation of a Tauri-based desktop application.",
+                                  "Exceptions": "The file includes numerous crate dependencies and symbols related to Tauri, GTK, and system libraries, which may be unexpected for a simple launcher but are typical for a cross-platform GUI app.",
+                                  "Features": "Exports Tauri commands such as \u0027run\u0027, \u0027greet\u0027, and invokes for RPC-style communication, along with configurations for webviews, context, and ACL handling; supports blocking tasks and integrates with WRY and GTK for window management.",
+                                  "Roles": [
+                                    "Component",
+                                    "Library"
+                                  ],
+                                  "Hash": "BA0BD43F0320E9BD162A8AC67D9E0DBA518E78C2F401C9B7FF7B0C55DA560726"
+                                }
+                              },
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This is a Rust compiler-generated binary metadata file (.rmeta) for a crate named \u0027work-products\u0027, containing type information, dependencies, and compilation data used during linking and building Rust programs.",
+                                  "Exceptions": "The file includes a future date stamp (2026-02-11), which is unusual as it predates the current time.",
+                                  "Features": "Contains metadata such as crate dependencies, exported functions, traits, and types; does not contain executable code but facilitates incremental compilation and dependency resolution.",
+                                  "Roles": [
+                                    "Build Artifact",
+                                    "Metadata Container"
+                                  ],
+                                  "Hash": "C1AF9FB5A0D40310FD125DFC5863371DA24E899DF2DB5AD2B97D347B5A13C11D"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          }
+                        ]
+                      },
+                      {
+                        "Name": "chrome_launcher_lib-1oneis2jl7do8",
+                        "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-1oneis2jl7do8",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx46xru1h-0kbvbnj.lock",
+                            "Summary": {
+                              "Summary": "This file is a lock file, likely used to synchronize access to a resource or prevent concurrent modifications in a system.",
+                              "Exceptions": "",
+                              "Features": "Ensures exclusive access to a resource or process by creating a lock mechanism.",
+                              "Roles": [
+                                "Lock"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": [
+                          {
+                            "Name": "s-hfx46xru1h-0kbvbnj-8hw7hfbmzu7t2c8f3b3vl3e6t",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-1oneis2jl7do8/s-hfx46xru1h-0kbvbnj-8hw7hfbmzu7t2c8f3b3vl3e6t",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This appears to be a compiled binary file from a Rust project, embedding version metadata from the Rust compiler used in its build process.",
+                                  "Exceptions": "The embedded build date is in the future (2026-02-11), which is unexpected for current analysis.",
+                                  "Features": "Embeds Rust version information including compiler version, commit hash, and build date.",
+                                  "Roles": [
+                                    "Binary Artifact",
+                                    "Compiled Executable"
+                                  ],
+                                  "Hash": "7E3C075798CDAA345E961CD42AB340C6861BC331C904C26C39E845F7DA917328"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          }
+                        ]
+                      },
+                      {
+                        "Name": "build_script_build-1iu90tkobw01j",
+                        "Path": "src-tauri/target/debug/incremental/build_script_build-1iu90tkobw01j",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx43gsmv2-185uvrd.lock",
+                            "Summary": {
+                              "Summary": "This file appears to be a lock file, typically used by systems or applications to indicate that a resource is in use or to store versioning and dependency information to prevent concurrent access.",
+                              "Exceptions": "The filename includes a string \u0027hfx43gsmv2-185uvrd\u0027 which unusually resembles a hashed identifier, potentially indicating it\u0027s a cached or backed-up version of a lock file.",
+                              "Features": "Provides a locking mechanism to ensure exclusive access to a resource, possibly includes hashing for integrity checks.",
+                              "Roles": [
+                                "Lock file"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": [
+                          {
+                            "Name": "s-hfx43gsmv2-185uvrd-45luk25qbzzq8cm5y09v8gnpc",
+                            "Path": "src-tauri/target/debug/incremental/build_script_build-1iu90tkobw01j/s-hfx43gsmv2-185uvrd-45luk25qbzzq8cm5y09v8gnpc",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "35r77ee8speod27nfpgz6pm9b.o",
+                                "Summary": {
+                                  "Summary": "This is a compiled ELF object file from Rust source code, containing assembled machine code and exported symbols for runtime functions such as program start-up and termination handlers.",
+                                  "Exceptions": "The file embeds the Rust compiler version (\u0027rustc version 1.93.1\u0027) in the comment section, which is unusual for typical binary objects but standard for Rust-compiled files.",
+                                  "Features": "Implements and exports Rust standard library runtime startup functions, including function call_once for FnOnce trait, language start internal, and termination reporting; contains relocation entries for data and text sections.",
+                                  "Roles": [
+                                    "Compiled Module",
+                                    "Startup Component"
+                                  ],
+                                  "Hash": "3B6A72FE43B5045745DF006B9678D8E9D9AE81D36850AF5E737E4F613904892B"
+                                }
+                              },
+                              {
+                                "Name": "query-cache.bin",
+                                "Summary": {
+                                  "Summary": "This appears to be a binary cache file (query-cache.bin) containing compiled query results and metadata from a Rust project build process, including symbols and function implementations.",
+                                  "Exceptions": "The file consists of binary data rather than source code, including what looks like compiled Rust code with debugging symbols, panic handlers, and build artifacts.",
+                                  "Features": "Implements build script execution (main function), error handling (rust_eh_personality), backtrace generation, and various core functions from the Rust standard library and crate.",
+                                  "Roles": [
+                                    "Cache",
+                                    "Binary Artifact"
+                                  ],
+                                  "Hash": "39802B72B98759878503B4BAD20B0702AC9FB373FA57A1FAED879B9D495B3BF0"
+                                }
+                              },
+                              {
+                                "Name": "24fijp4pkxaq98iiheckpm9nm.o",
+                                "Summary": {
+                                  "Summary": "This is a compiled Rust object file containing implementations for core function operations like FnOnce::call_once and backtrace handling for short backtraces, generated by rustc 1.93.1.",
+                                  "Exceptions": "",
+                                  "Features": "Implements core::ops::function::FnOnce::call_once and std::sys::backtrace::__rust_begin_short_backtrace.",
+                                  "Roles": [
+                                    "Object File",
+                                    "Compiled Unit"
+                                  ],
+                                  "Hash": "3CB98293E7C8B315B0FA3EFAE983B315E56EFFCB8B8277926BBCEC3EFDA905AD"
+                                }
+                              },
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This binary file contains a collection of compiled Rust object files and metadata from a build process, likely serving as a work products container for version 1.93.1.",
+                                  "Exceptions": "The file includes binary data only, with encoded object files and an anomalous future date (2026-02-11) in the version string.",
+                                  "Features": "Stores multiple hashed object files (e.g., 24fijp4pkxaq98iiheckpm9nm.o) along with version and metadata information, potentially exporting build artifacts.",
+                                  "Roles": [
+                                    "Build Container",
+                                    "Artifact"
+                                  ],
+                                  "Hash": "B6D88CA215D34B7983AFE8432E1EDFB5AB77E41E82368ACA971A6B4C535621C9"
+                                }
+                              },
+                              {
+                                "Name": "34e1gxg63d3s4l2hqmcgb8lf0.o",
+                                "Summary": {
+                                  "Summary": "This is a compiled Rust object file containing the implementation of the Termination trait\u0027s report method for the unit type (), which is used for handling process exit codes in Rust programs.",
+                                  "Exceptions": "The rustc version 1.93.1 is dated 2026-02-11, implying it\u0027s from a future build, and the file is in binary ELF format with embedded symbols and metadata rather than source code.",
+                                  "Features": "Implements std::process::Termination for () with a report method that returns an exit code, and includes debugging symbols and compiler notes.",
+                                  "Roles": [
+                                    "Component"
+                                  ],
+                                  "Hash": "C36FB89662400A195A3CBDBE2302298E8BFA90A0739D8C85E6DFA2BE5916037A"
+                                }
+                              },
+                              {
+                                "Name": "3dpnsri1nt97uz8r9jog5ltvp.o",
+                                "Summary": {
+                                  "Summary": "This file is a compiled Rust object file containing the implementation of a build script for a Tauri application, including functions for runtime initialization and the Tauri build process.",
+                                  "Exceptions": "Includes Rust compiler version string and standard ELF sections like .text and .eh_frame, which are expected for Rust object files.",
+                                  "Features": "Implements and exports the main entry point of the build script (_ZN18build_script_build4main17hbb2e16285c845786E) and calls functions from the standard library (std::rt::lang_start) and Tauri build library (_ZN11tauri_build5build17he463d039cc8980f4E).",
+                                  "Roles": [
+                                    "Object File",
+                                    "Build Script"
+                                  ],
+                                  "Hash": "8C86FFECDDAA474AA5A5522EA325BD3C304F5E1CCDC5FE10849ECBAD19837B3E"
+                                }
+                              },
+                              {
+                                "Name": "czd6cjymw58acfso50lhea9cw.o",
+                                "Summary": {
+                                  "Summary": "This ELF object file contains compiled Rust code implementing FnOnce trait methods for function call operations, vtable shims, and closures related to Rust program startup.",
+                                  "Exceptions": "Includes GCC exception handling table for unwinding and DWARF debugging information, which could be optimized out in release builds.",
+                                  "Features": "Implements call_once methods for FnOnce functions, vtable shim for closure invocation, lang_start closure wrapper, and provides relocation entries for linking to Rust\u0027s standard library.",
+                                  "Roles": [
+                                    "Module"
+                                  ],
+                                  "Hash": "E8F785F75656B0B911E666D4115C668713C816D639F18ECB126D7257A4F00B4B"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          }
+                        ]
+                      },
+                      {
+                        "Name": "chrome_launcher_lib-0hm8nuu9qatb4",
+                        "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-0hm8nuu9qatb4",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx47c7ujx-05zvvsn.lock",
+                            "Summary": {
+                              "Summary": "This is a lock file, likely used in software projects for dependency management or resource locking, with a randomly generated filename suggesting it may be temporary or from a specific tool like those in JavaScript ecosystems.",
+                              "Exceptions": "The name includes a random string, indicating potential auto-generation rather than a standard naming convention like \u0027package-lock.json\u0027.",
+                              "Features": "Implements version locking for dependencies to ensure reproducible builds; may also provide mutual exclusion for concurrent processes.",
+                              "Roles": [
+                                "Dependency Lock",
+                                "Resource Lock"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "s-hfx4s11yvv-174lz3f.lock",
+                            "Summary": {
+                              "Summary": "This is a lock file used by package managers such as npm or yarn to ensure consistent and reproducible installations of project dependencies.",
+                              "Exceptions": "The file name includes a unique hash-like suffix, which may be generated for specific builds or environments, potentially indicating customization or versioning not standard in all lock files.",
+                              "Features": "Locks specific versions of dependencies, preventing automatic updates and ensuring builds are consistent across different machines or deployments.",
+                              "Roles": [
+                                "Configuration"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": [
+                          {
+                            "Name": "s-hfx4s11yvv-174lz3f-bmmusjjqcwq4ht6klh8sh4wde",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-0hm8nuu9qatb4/s-hfx4s11yvv-174lz3f-bmmusjjqcwq4ht6klh8sh4wde",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "metadata.rmeta",
+                                "Summary": {
+                                  "Summary": "This file is a Rust metadata archive (.rmeta) containing compiled metadata for the \u0027chrome_launcher_lib\u0027 crate, a Tauri-based library that defines commands like \u0027run\u0027 and \u0027greet\u0027 for application interaction.",
+                                  "Exceptions": "Contains embedded paths referencing \u0027/home/hadi/github/me/chrome-launcher/src-tauri/src/lib.rs\u0027 and references to Tauri macros, which might indicate development-specific or unconventional inclusions in a metadata file.",
+                                  "Features": "Implements Tauri commands such as \u0027run\u0027 and \u0027greet\u0027, along with handlers and resolvers for webview interactions; exports InvokeMessage, InvokeResolver, and ResolvedCommand structs.",
+                                  "Roles": [
+                                    "Library"
+                                  ],
+                                  "Hash": "313945E129E41AD83F5973D04BDD0B4BD43C57C3142ACC9CCEF09C7DC61FB724"
+                                }
+                              },
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This binary file contains Rust compiler-generated work products, specifically a crate library or metadata file with rmeta data and metadata entries for compiled crates.",
+                                  "Exceptions": "The Rust compiler version 1.93.1 and commit date 2026-02-11 appear to be from a future or development version, as current typical versions are around 1.70 and dates prior to 2024.",
+                                  "Features": "Embeds metadata.rmeta files, lists rmeta entries, and includes a rust-end-file marker to indicate the end of the binary format.",
+                                  "Roles": [
+                                    "Compiler Artifact",
+                                    "Metadata Store"
+                                  ],
+                                  "Hash": "C1AF9FB5A0D40310FD125DFC5863371DA24E899DF2DB5AD2B97D347B5A13C11D"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          },
+                          {
+                            "Name": "s-hfx47c7ujx-05zvvsn-bmmusjjqcwq4ht6klh8sh4wde",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-0hm8nuu9qatb4/s-hfx47c7ujx-05zvvsn-bmmusjjqcwq4ht6klh8sh4wde",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "metadata.rmeta",
+                                "Summary": {
+                                  "Summary": "This is the Rust metadata file (.rmeta) for the chrome_launcher_lib crate, which serves as the backend library in a Tauri-based chrome launcher application. It defines Tauri commands such as \u0027run\u0027 and \u0027greet\u0027, along with supporting structures for Tauri\u0027s invoke system like InvokeMessage and InvokeResolver, and references numerous dependencies including tauri, serde, and webkit2gtk for building the cross-platform desktop app.",
+                                  "Exceptions": "The file appears to be a binary .rmeta metadata file dumped in a textual format with embedded dependency hashes, crate names, and source file paths (e.g., /home/hadi/github/me/chrome-launcher/src-tauri/src/lib.rs), which is unusual for analysis purposes.",
+                                  "Features": "Supports Tauri commands and handlers (e.g., generate_handler, invoke_error), serialization with serde, runtime with wry or webkit2gtk, and plugin integration like tauri_plugin_opener. Includes async capabilities via tokio and futures, and cross-platform abstractions.",
+                                  "Roles": [
+                                    "Backend Component",
+                                    "Library"
+                                  ],
+                                  "Hash": "313945E129E41AD83F5973D04BDD0B4BD43C57C3142ACC9CCEF09C7DC61FB724"
+                                }
+                              },
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This binary file contains work products from Rust incremental compilation, including metadata and version information for a crate or project.",
+                                  "Exceptions": "The version date is set to 2026-02-11, which appears to be in the future, potentially indicating test data or a simulation.",
+                                  "Features": "Supports Rust incremental compilation by storing rmeta files and metadata for efficient rebuilds.",
+                                  "Roles": [
+                                    "Metadata Storage",
+                                    "Compilation Artifact"
+                                  ],
+                                  "Hash": "C1AF9FB5A0D40310FD125DFC5863371DA24E899DF2DB5AD2B97D347B5A13C11D"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          }
+                        ]
+                      },
+                      {
+                        "Name": "chrome_launcher_lib-1v65w2nbz5573",
+                        "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-1v65w2nbz5573",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx4s1232n-0bb9819.lock",
+                            "Summary": {
+                              "Summary": "This file appears to be a lock file that locks dependency versions to ensure consistent and reproducible installations of packages.",
+                              "Exceptions": "The file name suggests it may be a hashed or specific lock file, potentially from a package manager like npm or Yarn, with no obvious exceptions in purpose.",
+                              "Features": "Dependency version locking and reproducibility assurance for package installations.",
+                              "Roles": [
+                                "Configuration",
+                                "Lock file"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "s-hfx47c7ydl-0plnygf.lock",
+                            "Summary": {
+                              "Summary": "This file is a lock file used to indicate and enforce exclusive access to a resource in a software system, preventing concurrent modifications.",
+                              "Exceptions": "The filename uses a random string format, which is unusual for standard lock files but common for auto-generated ones to ensure uniqueness.",
+                              "Features": "Provides file-based locking mechanism to synchronize access and avoid race conditions.",
+                              "Roles": [
+                                "Lock"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": [
+                          {
+                            "Name": "s-hfx47c7ydl-0plnygf-cr87zmscdtiselfgvnp4x1s2c",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-1v65w2nbz5573/s-hfx47c7ydl-0plnygf-cr87zmscdtiselfgvnp4x1s2c",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This file is a binary work products cache generated by the Rust compiler, containing version information (1.93.1), a commit hash (01f6ddf75), and a timestamp (2026-02-11), along with compilation artifacts for incremental builds.",
+                                  "Exceptions": "The file includes an unexpected textual marker \u0027rust-end-file\u0027 at the end, which may be a custom delimiter, and embedded null bytes suggesting binary serialization.",
+                                  "Features": "It exports cached compilation results including work products for efficient recompilation, with metadata on Rustc version and build commit.",
+                                  "Roles": [
+                                    "Cache"
+                                  ],
+                                  "Hash": "7E3C075798CDAA345E961CD42AB340C6861BC331C904C26C39E845F7DA917328"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          },
+                          {
+                            "Name": "s-hfx4s1232n-0bb9819-cr87zmscdtiselfgvnp4x1s2c",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher_lib-1v65w2nbz5573/s-hfx4s1232n-0bb9819-cr87zmscdtiselfgvnp4x1s2c",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This binary file contains metadata for a Rust executable, including version 1.93.1, commit hash 01f6ddf75, and build date 2026-02-11.",
+                                  "Exceptions": "Includes a build date in the future (2026-02-11) and ends with \u0027rust-end-file\u0027, suggesting it may be a marker or test file.",
+                                  "Features": "Embeds software version, commit hash, and build timestamp for version tracking.",
+                                  "Roles": [
+                                    "Executable"
+                                  ],
+                                  "Hash": "7E3C075798CDAA345E961CD42AB340C6861BC331C904C26C39E845F7DA917328"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          }
+                        ]
+                      },
+                      {
+                        "Name": "chrome_launcher-1bn6xnd6eyo6p",
+                        "Path": "src-tauri/target/debug/incremental/chrome_launcher-1bn6xnd6eyo6p",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "s-hfx48yf4wd-1t7jb1g.lock",
+                            "Summary": {
+                              "Summary": "This file is a lock file, typically used to prevent concurrent access to a resource or to lock versions in package management systems.",
+                              "Exceptions": "The filename includes a non-standard prefix with a random-looking string (s-hfx48yf4wd-1t7jb1g), which is unusual for standard lock file naming conventions.",
+                              "Features": "No executable features or code are implemented; it serves as a marker for locking purposes.",
+                              "Roles": [
+                                "Lock File"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "s-hfx4s17le3-03fj3hi.lock",
+                            "Summary": {
+                              "Summary": "This file is a package lock file that records specific versions of dependencies to ensure consistent and reproducible builds across environments.",
+                              "Exceptions": "The file name includes a seemingly random string prefix, which is unusual for standard lock files and may indicate a custom or auto-generated identifier.",
+                              "Features": "Dependency version locking for package managers.",
+                              "Roles": [
+                                "Lockfile",
+                                "Configuration"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": [
+                          {
+                            "Name": "s-hfx4s17le3-03fj3hi-5g6cec5lge3x1zbe5ocyg6u20",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher-1bn6xnd6eyo6p/s-hfx4s17le3-03fj3hi-5g6cec5lge3x1zbe5ocyg6u20",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This file appears to be a work product artifact generated by the Rust compiler, containing version information and metadata for incremental compilation.",
+                                  "Exceptions": "The file includes binary data with null characters, which are typical for binary formats but unexpected in pure text contexts.",
+                                  "Features": "It features version tracking with Rust version 1.93.1, a commit hash, and a build date, likely used for caching or dependency management in Rust projects.",
+                                  "Roles": [
+                                    "Artifact",
+                                    "Metadata"
+                                  ],
+                                  "Hash": "7E3C075798CDAA345E961CD42AB340C6861BC331C904C26C39E845F7DA917328"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          },
+                          {
+                            "Name": "s-hfx48yf4wd-1t7jb1g-2jyvxlonq1vn7nlwlklq7smdy",
+                            "Path": "src-tauri/target/debug/incremental/chrome_launcher-1bn6xnd6eyo6p/s-hfx48yf4wd-1t7jb1g-2jyvxlonq1vn7nlwlklq7smdy",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "work-products.bin",
+                                "Summary": {
+                                  "Summary": "This file is a binary executable for the work-products application, compiled using Rust version 1.93.1 with commit hash 01f6ddf75 from 2026-02-11.",
+                                  "Exceptions": "The file contains binary data including embedded version metadata and a Rust identifier at the end, which is unusual for a standard executable.",
+                                  "Features": "Implements work-products functionality, likely exporting task or project management features built with the Rust ecosystem.",
+                                  "Roles": [
+                                    "Application",
+                                    "Executable"
+                                  ],
+                                  "Hash": "7E3C075798CDAA345E961CD42AB340C6861BC331C904C26C39E845F7DA917328"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Name": "build",
+                    "Path": "src-tauri/target/debug/build",
+                    "FolderSummary": "Summary unavailable due to error.",
+                    "Files": [],
+                    "Directories": [
+                      {
+                        "Name": "gtk-sys-c4d3f3f5d447c0e9",
+                        "Path": "src-tauri/target/debug/build/gtk-sys-c4d3f3f5d447c0e9",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-c4d3f3f5d447c0e9.d",
+                            "Summary": {
+                              "Summary": "This is a Rust dependency file (.d) generated during the compilation of the gtk-sys crate, listing the source files that the build script (build.rs) depends on to ensure it rebuilds when those dependencies change.",
+                              "Exceptions": "No unexpected elements; it follows the standard format for Rust dependency files, primarily linking the build script to its source within the gtk-sys crate registry.",
+                              "Features": "Tracks build dependencies for the gtk-sys crate\u0027s build script, including paths to the crate\u0027s build.rs file in the Cargo registry.",
+                              "Roles": [
+                                "Build Script Dependency"
+                              ],
+                              "Hash": "5D74ADA889F9BDB8F55287BFD29A974ABB7100B1E3D847416B61E2E27DDC8717"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "atk-sys-607945f8e695a9e5",
+                        "Path": "src-tauri/target/debug/build/atk-sys-607945f8e695a9e5",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-607945f8e695a9e5.d",
+                            "Summary": {
+                              "Summary": "This file is a dependency file for the build script of the atk-sys Rust crate, used to generate Rust bindings for the Accessibility Toolkit (ATK) library.",
+                              "Exceptions": "No unexpected elements.",
+                              "Features": "Generates FFI bindings for the ATK library during the build process.",
+                              "Roles": [
+                                "Build Script"
+                              ],
+                              "Hash": "EECB2E400146AD302AB94C30A5EF261A8BA46A9AAEC791FBBC7B78173F8B49BB"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "javascriptcore-rs-sys-5d2b724cc2fa90f2",
+                        "Path": "src-tauri/target/debug/build/javascriptcore-rs-sys-5d2b724cc2fa90f2",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-5d2b724cc2fa90f2.d",
+                            "Summary": {
+                              "Summary": "This file is a Rust build dependency file (.d) that lists prerequisites for compiling the build script of the javascriptcore-rs-sys crate, enabling incremental rebuilds when source files change.",
+                              "Exceptions": "No unexpected inclusions; the dependencies are standard and point to the expected build.rs file from the crate.",
+                              "Features": "Tracks file dependencies for efficient compilation of the build script, avoiding unnecessary rebuilds.",
+                              "Roles": [
+                                "Build Artifact",
+                                "Dependency Tracker"
+                              ],
+                              "Hash": "5D1C4F68011FA6B48110D6FC374E3F7F4B3B66B7E23198C8DD6BB5CA94601EE5"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "rustix-26603c06edaf3222",
+                        "Path": "src-tauri/target/debug/build/rustix-26603c06edaf3222",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-26603c06edaf3222.d",
+                            "Summary": {
+                              "Summary": "This .d file serves as a dependency list for the build script of the rustix crate in a Rust project, specifying the source and output files it depends on for compilation.",
+                              "Exceptions": "None noticeable; it contains standard dependency paths for a Rust build script.",
+                              "Features": "None; this is a dependency file and does not implement or export any code features.",
+                              "Roles": [
+                                "Build Dependency"
+                              ],
+                              "Hash": "6FBF6C467450AF851FCC3C7E02F58F1EB452076002865261A380509AC73A3EAF"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "tauri-plugin-opener-6b403281b148baf0",
+                        "Path": "src-tauri/target/debug/build/tauri-plugin-opener-6b403281b148baf0",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-6b403281b148baf0.d",
+                            "Summary": {
+                              "Summary": "This is a dependency file for the Rust build process of the tauri-plugin-opener crate, listing the files that the build script depends on to compile correctly.",
+                              "Exceptions": "No unexpected or anomalous inclusions; all listed paths are standard source files for the crate\u0027s build script and scope entry module.",
+                              "Features": "Serves as a dependency declaration for features in tauri-plugin-opener, such as URL opening and file handling scopes for Tauri applications.",
+                              "Roles": [
+                                "Build Dependency File"
+                              ],
+                              "Hash": "E59287D704B770B01B7FF9B927C67B1A9DB915276765B3E63440EB1513ACB3B5"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "serde_core-ab04acb167fee190",
+                        "Path": "src-tauri/target/debug/build/serde_core-ab04acb167fee190",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "root-output",
+                            "Summary": {
+                              "Summary": "This file represents a build output directory for the serde_core crate within a Tauri project\u0027s Rust component, containing compiled artifacts generated during the build process.",
+                              "Exceptions": "The provided item is a directory path rather than an individual source code file, making it unconventional for code analysis.",
+                              "Features": "Generated build artifacts, object files, metadata, and possibly linked libraries for the serde_core serialization library used in the project.",
+                              "Roles": [
+                                "Build Artifact",
+                                "Dependency Output"
+                              ],
+                              "Hash": "D19AD21567C1BAA65E0644358082CA0248F263FAF68B0853F0C007CF6143198E"
+                            }
+                          },
+                          {
+                            "Name": "stderr",
+                            "Summary": {
+                              "Summary": "This file appears to be a minimal representation or placeholder for the standard error stream, containing only the word \u0027stderr\u0027 without any functional code.",
+                              "Exceptions": "The file contains only a single word \u0027stderr\u0027, which is not typical for a code file as it lacks any programming logic or structure.",
+                              "Features": "No features are implemented or exported, as the file is not a executable script or module.",
+                              "Roles": [
+                                "Placeholder",
+                                "Standard Stream"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "output",
+                            "Summary": {
+                              "Summary": "This file is the output generated by Cargo during the Rust build process, containing directives to rerun the build if build.rs changes and configuration checks for various feature flags.",
+                              "Exceptions": "No exceptions; all content appears to be standard Cargo build output directives.",
+                              "Features": "Implements configuration checks for multiple features such as no_core_cstr, no_core_error, no_core_net, no_core_num_saturating, no_diagnostic_namespace, no_serde_derive, no_std_atomic, no_std_atomic64, no_target_has_atomic, and conditional cfgs like if_docsrs_then_no_serde_core.",
+                              "Roles": [
+                                "Build Configuration",
+                                "Compiler Directive"
+                              ],
+                              "Hash": "B05731ACE603D330B9A7AAF76B8433DF15C3E1B2A3A95F4C644D5F5ED0C82F84"
+                            }
+                          },
+                          {
+                            "Name": "invoked.timestamp",
+                            "Summary": {
+                              "Summary": "This file serves as a timestamp marker, with its modification time (mtime) indicating when a process or event was invoked or started.",
+                              "Exceptions": "None; it contains a simple descriptive text and no code.",
+                              "Features": "Utilizes the file\u0027s mtime to record the start time of an invocation without implementing any code logic.",
+                              "Roles": [
+                                "Timestamp Marker"
+                              ],
+                              "Hash": "5A109E6643E8D3E88642E3F35E85D2A83E639D07523AA6E99166C48178E965C3"
+                            }
+                          }
+                        ],
+                        "Directories": [
+                          {
+                            "Name": "out",
+                            "Path": "src-tauri/target/debug/build/serde_core-ab04acb167fee190/out",
+                            "FolderSummary": "Summary unavailable due to error.",
+                            "Files": [
+                              {
+                                "Name": "private.rs",
+                                "Summary": {
+                                  "Summary": "This file defines a Rust module named __private228 that re-exports all items from the crate\u0027s private module, with all documentation marked as hidden to restrict visibility.",
+                                  "Exceptions": "The module name \u0027__private228\u0027 is unusual and appears auto-generated or obfuscated, which is not typical for standard library modules.",
+                                  "Features": "Re-exports all public items from the parent crate\u0027s private submodule using \u0027pub use crate::private::*;\u0027.",
+                                  "Roles": [
+                                    "Module",
+                                    "Re-export"
+                                  ],
+                                  "Hash": "27AD1B5FB4EEBEB1DA6419CBFAD3AC1922ED1D817FCBAB0A1DAE1BDFD38D8307"
+                                }
+                              }
+                            ],
+                            "Directories": []
+                          }
+                        ]
+                      },
+                      {
+                        "Name": "serde_json-ead45f841a500b99",
+                        "Path": "src-tauri/target/debug/build/serde_json-ead45f841a500b99",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "invoked.timestamp",
+                            "Summary": {
+                              "Summary": "This file serves as a timestamp marker, storing the modify time (mtime) indicating when a process or event was started.",
+                              "Exceptions": "None; the file contains only a simple descriptive note.",
+                              "Features": "Stores a timestamp via file modification time; includes explanatory text about its purpose.",
+                              "Roles": [
+                                "Marker",
+                                "Timestamp"
+                              ],
+                              "Hash": "5A109E6643E8D3E88642E3F35E85D2A83E639D07523AA6E99166C48178E965C3"
+                            }
+                          },
+                          {
+                            "Name": "root-output",
+                            "Summary": {
+                              "Summary": "This directory contains build output artifacts for the serde_json crate within a Tauri application\u0027s debug build process.",
+                              "Exceptions": "No exceptions; this appears to be a standard build output directory for a dependency crate in Rust.",
+                              "Features": "Compiled library artifacts and possibly generated metadata from the serde_json build.",
+                              "Roles": [
+                                "Build Artifact Directory"
+                              ],
+                              "Hash": "A635DDC61C52A5CEC288DDCB1F8296EB2847B4B70E43C203548B3AC821E57215"
+                            }
+                          },
+                          {
+                            "Name": "output",
+                            "Summary": {
+                              "Summary": "This file contains Cargo build output directives that configure when to rerun the build, check for conditional compilation flags related to arithmetic optimizations, and set a configuration option for 64-bit fast arithmetic.",
+                              "Exceptions": "No unexpected items; the content consists solely of standard Cargo build directives.",
+                              "Features": "Implements rerun-if-changed for build.rs, checks cfg values for fast_arithmetic (32 or 64), and sets fast_arithmetic to \u002764\u0027 for conditional compilation.",
+                              "Roles": [
+                                "Build Configuration"
+                              ],
+                              "Hash": "6BB524834A0C0657C682DBB81BC6EEB23AC92C48DA502F17CE4455240E5D062B"
+                            }
+                          },
+                          {
+                            "Name": "stderr",
+                            "Summary": {
+                              "Summary": "This file represents the standard error stream (stderr) in Unix systems, used for outputting error messages from programs.",
+                              "Exceptions": "Contains only the string \u0027stderr\u0027, not executable code, which is unexpected for a code file.",
+                              "Features": "No features implemented; it serves as a reference to the standard error device for input/output redirection.",
+                              "Roles": [
+                                "I/O Stream",
+                                "System Device"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "proc-macro2-611e2942a85d2c93",
+                        "Path": "src-tauri/target/debug/build/proc-macro2-611e2942a85d2c93",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-611e2942a85d2c93.d",
+                            "Summary": {
+                              "Summary": "This .d file is a dependency list generated for the build script of the proc-macro2 crate, specifying the source files and targets involved in its compilation within a Rust project\u0027s build system.",
+                              "Exceptions": "No unexpected or unusual elements are present; it adheres to standard dependency file format.",
+                              "Features": "Lists direct dependencies between the build script executable and the corresponding build.rs source file, enabling incremental builds in the Rust toolchain.",
+                              "Roles": [
+                                "Build Dependency",
+                                "Artifact"
+                              ],
+                              "Hash": "D34481B2F2595E9B87E11A2EE614B6450DED5B16F3BCBE7BED417AD6B184587C"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "erased-serde-4c00ab5cad8785ad",
+                        "Path": "src-tauri/target/debug/build/erased-serde-4c00ab5cad8785ad",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-4c00ab5cad8785ad.d",
+                            "Summary": {
+                              "Summary": "This file is a dependency file (Makefile-style .d) generated during the build process for the build script of the erased-serde crate, listing the source files it depends on.",
+                              "Exceptions": "Includes an empty line after the build script executable path, which might be formatting.",
+                              "Features": "No features are implemented or exported; this is a build artifact with no functionality.",
+                              "Roles": [
+                                "Build",
+                                "Dependency File"
+                              ],
+                              "Hash": "73286A297811CBAA5B06DDBB92478CC0A1560E8D1C9728E456ED88CD53010A04"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "getrandom-92268979822c0d95",
+                        "Path": "src-tauri/target/debug/build/getrandom-92268979822c0d95",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-92268979822c0d95.d",
+                            "Summary": {
+                              "Summary": "This file is a dependency tracking file for the build script of the getrandom Rust crate, listing the source build.rs file and generated build artifacts it depends on for incremental compilation.",
+                              "Exceptions": "",
+                              "Features": "Dependency tracking for build scripts in Rust projects.",
+                              "Roles": [
+                                "Dependency Tracker"
+                              ],
+                              "Hash": "09D2F07EFE2EBAFFBB854FA3784F42116B928D1EE5BEF6B41964D3625E7DB236"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "crossbeam-utils-ad82b095c0ddb39a",
+                        "Path": "src-tauri/target/debug/build/crossbeam-utils-ad82b095c0ddb39a",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-ad82b095c0ddb39a.d",
+                            "Summary": {
+                              "Summary": "This is a dependency file (.d) generated during the Rust build process for the crossbeam-utils crate\u0027s build script, listing the source files it depends on to enable incremental compilation.",
+                              "Exceptions": "The file includes absolute paths to files in the user\u0027s home directory and Cargo registry, which is standard but could expose system-specific information; it\u0027s an auto-generated artifact, not hand-written code.",
+                              "Features": "It specifies dependencies between the built build script executable and its source files (build.rs, no_atomic.rs, build-common.rs), along with an environment dependency on the package name.",
+                              "Roles": [
+                                "Dependency Manifest",
+                                "Build Artifact"
+                              ],
+                              "Hash": "0D69D6BA810237A529771F2798042A1B1DAAEEA5E13331177C01D89D99A480D3"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "getrandom-faa283bdb51504be",
+                        "Path": "src-tauri/target/debug/build/getrandom-faa283bdb51504be",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "output",
+                            "Summary": {
+                              "Summary": "This file appears to be an output-related component, possibly handling console or file output in a software system.",
+                              "Exceptions": "The file name \u0027output\u0027 is generic and lacks context; the actual file content is not provided for detailed analysis.",
+                              "Features": "Potential features include data output mechanisms, such as printing to screen or writing to files, though specifics are unavailable without code.",
+                              "Roles": [
+                                "Utility"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "invoked.timestamp",
+                            "Summary": {
+                              "Summary": "This file serves as a timestamp record, using its modification time (mtime) to indicate when an invocation or process was started.",
+                              "Exceptions": "The file may be empty and act solely as a timestamp marker without containing any data.",
+                              "Features": "Stores and represents a start timestamp through the file\u0027s mtime.",
+                              "Roles": [
+                                "Timestamp File",
+                                "Data File"
+                              ],
+                              "Hash": "5A109E6643E8D3E88642E3F35E85D2A83E639D07523AA6E99166C48178E965C3"
+                            }
+                          },
+                          {
+                            "Name": "stderr",
+                            "Summary": {
+                              "Summary": "This file is named \u0027stderr\u0027 and contains no code or content.",
+                              "Exceptions": "The file is empty, which is unexpected for a code file intended for analysis.",
+                              "Features": "No features implemented or exported.",
+                              "Roles": [],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "root-output",
+                            "Summary": {
+                              "Summary": "This file is a build artifact generated by the getrandom crate\u0027s build process, containing C code for system-specific implementations of random number generation.",
+                              "Exceptions": "The file name \u0027root-output\u0027 is atypical for getrandom build outputs, which usually include files like rng.c or rng.h.",
+                              "Features": "Implements entropy gathering using OS-specific APIs, such as getrandom syscall on Linux, getentropy on Unix-like systems, or CryptGenRandom on Windows.",
+                              "Roles": [
+                                "Generated C Library",
+                                "Entropy Source Module"
+                              ],
+                              "Hash": "48B3DBFDEBD43F460DD975E634FBA307D8D3F970A4D796EA8E600D6E409DFE3D"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "parking_lot_core-1de25b09392001a5",
+                        "Path": "src-tauri/target/debug/build/parking_lot_core-1de25b09392001a5",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "stderr",
+                            "Summary": {
+                              "Summary": "This file is named \u0027stderr\u0027 and does not contain any visible code or functionality; it may be a placeholder or reference to standard error output in a programming context.",
+                              "Exceptions": "The file lacks actual code content and is unexpectedly minimal, consisting only of its name without implementation details.",
+                              "Features": "No features are implemented or exported from this file.",
+                              "Roles": [
+                                "Utility"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "invoked.timestamp",
+                            "Summary": {
+                              "Summary": "This file serves as a timestamp indicator, with its modification time (mtime) recording when an invocation or process was started.",
+                              "Exceptions": "None, as it appears to be a simple timestamp file with no additional content or unexpected elements.",
+                              "Features": "Implicit timestamp storage via file modification time.",
+                              "Roles": [
+                                "Metadata",
+                                "Logging"
+                              ],
+                              "Hash": "5A109E6643E8D3E88642E3F35E85D2A83E639D07523AA6E99166C48178E965C3"
+                            }
+                          },
+                          {
+                            "Name": "root-output",
+                            "Summary": {
+                              "Summary": "This is the output directory created during the debug build of the parking_lot_core crate, a dependency in the Rust project chrome-launcher, containing compiled artifacts.",
+                              "Exceptions": "The path points to a build directory rather than a single code file, containing build outputs like static libraries instead of source code.",
+                              "Features": "Includes compiled static libraries (e.g., libparking_lot_core.a or .rlib files) implementing low-level synchronization primitives for the parking_lot crate.",
+                              "Roles": [
+                                "Build dependency output"
+                              ],
+                              "Hash": "9A54411DDFFB36E39A329A629C42129901D93D9D284E2E8C7D01B4BC5895B336"
+                            }
+                          },
+                          {
+                            "Name": "output",
+                            "Summary": {
+                              "Summary": "This file is the output of a Cargo build process containing directives to rerun the build script on changes to \u0027build.rs\u0027 and to check for a custom configuration flag \u0027cfg(tsan_enabled)\u0027. It serves as build configuration output that influences how Rust compiles the project.",
+                              "Exceptions": "None, as the content is standard Cargo build output.",
+                              "Features": "Configuration for rebuild triggers based on file changes and validation of configuration flags.",
+                              "Roles": [
+                                "Build Output",
+                                "Configuration File"
+                              ],
+                              "Hash": "F6DC58A2D4CE160182484EBA215B3EF517436C90653F38B7B05FF641EA59E2A4"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "gtk-4db3b4790c681c58",
+                        "Path": "src-tauri/target/debug/build/gtk-4db3b4790c681c58",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "invoked.timestamp",
+                            "Summary": {
+                              "Summary": "This file acts as a timestamp indicator, storing its modification time to mark when an invocation or process was started.",
+                              "Exceptions": "The file does not contain code or scripts; it merely serves as a passive timestamp artifact with no unexpected behavior.",
+                              "Features": "Provides a simple mechanism for tracking the start time of an event through the file\u0027s mtime.",
+                              "Roles": [
+                                "Metadata"
+                              ],
+                              "Hash": "5A109E6643E8D3E88642E3F35E85D2A83E639D07523AA6E99166C48178E965C3"
+                            }
+                          },
+                          {
+                            "Name": "stderr",
+                            "Summary": {
+                              "Summary": "This file appears to be a reference to the standard error (stderr) stream in a Unix-like system, used for outputting diagnostic messages.",
+                              "Exceptions": "No actual code or content is provided; it seems to be an empty or placeholder file.",
+                              "Features": "Serves as a system stream for error output, typically redirectable in programs.",
+                              "Roles": [
+                                "System Stream"
+                              ],
+                              "Hash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                            }
+                          },
+                          {
+                            "Name": "root-output",
+                            "Summary": {
+                              "Summary": "This file appears to be an auto-generated Rust code file containing bindings to the GTK library, facilitating GUI rendering and interaction in a Tauri application on Linux systems.",
+                              "Exceptions": "The file includes extensive GTK bindings as expected, with no apparent unexpected elements; however, it may contain compiler-generated warnings if the build process encountered issues.",
+                              "Features": "Implements and exports Rust bindings for GTK functions, including widget management, signal handling, and drawing operations, enabling desktop application GUI development.",
+                              "Roles": [
+                                "Binding File",
+                                "Build Artifact"
+                              ],
+                              "Hash": "B195779B53FF84FED96CA0916E6AECB892248F46758DABED77A9A93A85916D04"
+                            }
+                          },
+                          {
+                            "Name": "output",
+                            "Summary": {
+                              "Summary": "This file contains output from pkg-config for GTK\u002B 3.0, specifying environment variables to monitor for build changes and setting Rust compiler flags for multiple GDK backends.",
+                              "Exceptions": "The file configures the Rust compiler with three different gdk_backends simultaneously, which may not be typical depending on the target platform.",
+                              "Features": "Monitoring of various pkg-config related environment variables and enablement of broadway, wayland, and x11 backends for GDK.",
+                              "Roles": [
+                                "Build Configuration"
+                              ],
+                              "Hash": "B22320B00BD0B8D142B69F038DF641EB7CB68CF2460F6EF2DF64A3F6B38BC27B"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "quote-89598a94e220cc3a",
+                        "Path": "src-tauri/target/debug/build/quote-89598a94e220cc3a",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-89598a94e220cc3a.d",
+                            "Summary": {
+                              "Summary": "This is a build dependency file for the Rust crate \u0027quote\u0027, listing the files the build script depends on to ensure proper recompilation.",
+                              "Exceptions": "",
+                              "Features": "Dependency tracking for the build script of the \u0027quote\u0027 crate.",
+                              "Roles": [
+                                "Build Artifact",
+                                "Dependency File"
+                              ],
+                              "Hash": "BDB505ECCC401C3B9E7E53678C4D721AD9281E64D5E87F59678C148D39C1229F"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "gio-1fb62ad9f6db55d2",
+                        "Path": "src-tauri/target/debug/build/gio-1fb62ad9f6db55d2",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-1fb62ad9f6db55d2.d",
+                            "Summary": {
+                              "Summary": "This is a dependency file generated by the Rust compiler for the build script of the \u0027gio\u0027 crate, tracking its source file to enable incremental builds.",
+                              "Exceptions": "The file includes a target path that appears to be the built script executable, which is typical but lists only one dependency source.",
+                              "Features": "Tracks dependencies for the build script to ensure recompilation when sources change; exports no features as it\u0027s a build artifact.",
+                              "Roles": [
+                                "Build Artifact",
+                                "Dependency Tracker"
+                              ],
+                              "Hash": "1DD2A8D2758851EC99FCEAF4DD5936501325A4011BF72494EA85B579BEBABC9D"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "serde_json-df67e828fcfc09e5",
+                        "Path": "src-tauri/target/debug/build/serde_json-df67e828fcfc09e5",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-df67e828fcfc09e5.d",
+                            "Summary": {
+                              "Summary": "This file is a dependency file (.d) generated during the Rust build process for the serde_json crate\u0027s build script, specifying that the build executable depends on the build.rs source file.",
+                              "Exceptions": "The third line lists the build.rs source file as a target with no dependencies, which is unusual but standard for Make-style dependency files where the source itself has no deps listed.",
+                              "Features": "It declares build dependencies but does not implement or export any features.",
+                              "Roles": [
+                                "Build Dependency File"
+                              ],
+                              "Hash": "C49B42532AA176F39784943136D5A4E7D4E6FAF63EC79867AAD1F4C5CE0718EA"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      },
+                      {
+                        "Name": "camino-c6d43ddf2e514eac",
+                        "Path": "src-tauri/target/debug/build/camino-c6d43ddf2e514eac",
+                        "FolderSummary": "Summary unavailable due to error.",
+                        "Files": [
+                          {
+                            "Name": "build_script_build-c6d43ddf2e514eac.d",
+                            "Summary": {
+                              "Summary": "This is a dependency file generated by Cargo during the build of the \u0027camino\u0027 Rust crate, specifying the files that the build script depends on to trigger recompilation.",
+                              "Exceptions": "There are no unexpected or anomalous inclusions; the file contains only standard dependency listings for the build script.",
+                              "Features": "It implements dependency tracking to inform the build system which files should trigger a rebuild of the build script.",
+                              "Roles": [
+                                "Build Dependency File"
+                              ],
+                              "Hash": "B07499F044E30DF65FCF82D1B050323E4069F0811FCB991AEA828CDA916AB1F9"
+                            }
+                          }
+                        ],
+                        "Directories": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Name": ".vscode",
+        "Path": ".vscode",
+        "FolderSummary": "Summary unavailable due to error.",
+        "Files": [
+          {
+            "Name": "extensions.json",
+            "Summary": {
+              "Summary": "This file specifies recommended VS Code extensions for a project, including extensions for Svelte, Tauri, and Rust development.",
+              "Exceptions": "The file follows the standard VS Code extensions recommendations format with no unexpected elements.",
+              "Features": "Provides a list of recommended extensions: svelte.svelte-vscode, tauri-apps.tauri-vscode, rust-lang.rust-analyzer.",
+              "Roles": [
+                "Configuration",
+                "Recommendation List"
+              ],
+              "Hash": "48D16BBC435FC3CAEB5E85EA5FCF61226945AF49066DE7475ED3D8DC5B4C0961"
+            }
+          }
+        ],
+        "Directories": []
+      }
+    ]
+  },
+  "IndexedAt": "2026-02-18T16:54:26.2867644Z"
+}
